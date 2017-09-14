@@ -8,13 +8,20 @@ CSharp Wrapper for ParallelDots APIs
 ```sh
 PM> Install-Package ParallelDots
 ```
-#### Import wrapper namespace
+
+#### Set a reference path in Visual C#
+
+> Open the Reference Manager in Visual Studio using the Project > Add Reference > Browse.
+
+> Then select the .dll file from the installed packages in the "packages" directory of the application.
+
+#### Import ParallelDots namespace
 ```sh
-using wrapper
+using ParallelDots
 ```
 #### Initialize Instance of api Class
 ```sh
-wrapper.api pd = new wrapper.api(api_key);
+ParallelDots.api pd = new ParallelDots.api(api_key);
 ```
 #### Examples
 ```sh
