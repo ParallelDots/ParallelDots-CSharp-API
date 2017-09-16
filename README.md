@@ -60,8 +60,8 @@ Console.WriteLine(intent);
 
 {"intent": "news"}
 
-var multilang_sentiment = pd.multilang_sentiment("La ville de Paris est très belle", "fr");
-Console.WriteLine(multilang_sentiment);
+var multilang = pd.multilang("La ville de Paris est très belle", "fr");
+Console.WriteLine(multilang);
 
 {"sentiment": "positive", "confidence_score": 0.845703}
 
