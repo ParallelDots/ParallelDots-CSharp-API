@@ -1,6 +1,7 @@
 # ParallelDots-CSharp-API
 CSharp Wrapper for ParallelDots APIs
-
+#### Supported Environment
+> .NET Framework 4.0
 #### Installation
 
 > Open the console in Visual Studio using the Tools > NuGet Package Manager > Package Manager Console command.
