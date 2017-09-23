@@ -24,7 +24,7 @@ using ParallelDots
 ```sh
 ParallelDots.api pd = new ParallelDots.api(api_key);
 ```
-#### Examples
+#### Example
 ```sh
 var sentiment = pd.sentiment("Come on, lets play together");
 Console.WriteLine(sentiment);
