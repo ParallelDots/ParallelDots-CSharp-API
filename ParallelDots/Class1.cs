@@ -116,27 +116,27 @@ namespace ParallelDots
                 return responseString;
             }
         }
-		public string sentiment_social(string text)
+	public string sentiment_social(string text)
+	{
+		var url = "http://apis.paralleldots.com/v2/sentiment_social?text=" + text + "&api_key=" + this.api_key;
+		using (var client = new WebClient())
 		{
-			var url = "http://apis.paralleldots.com/v2/sentiment_social?text=" + text + "&api_key=" + this.api_key;
-			using (var client = new WebClient())
-			{
-				var values = new NameValueCollection();
-				var response = client.UploadValues(url, values);
-				var responseString = Encoding.Default.GetString(response);
-				return responseString;
-			}
+			var values = new NameValueCollection();
+			var response = client.UploadValues(url, values);
+			var responseString = Encoding.Default.GetString(response);
+			return responseString;
 		}
-		public string usage()
+	}
+	public string usage()
+	{
+		var url = "http://apis.paralleldots.com/usage?api_key=" + this.api_key;
+		using (var client = new WebClient())
 		{
-			var url = "http://apis.paralleldots.com/usage?api_key=" + this.api_key;
-			using (var client = new WebClient())
-			{
-				var values = new NameValueCollection();
-				var response = client.UploadValues(url, values);
-				var responseString = Encoding.Default.GetString(response);
-				return responseString;
-			}
+			var values = new NameValueCollection();
+			var response = client.UploadValues(url, values);
+			var responseString = Encoding.Default.GetString(response);
+			return responseString;
 		}
+	}
     }
 }
