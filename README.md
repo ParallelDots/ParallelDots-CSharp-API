@@ -70,4 +70,14 @@ var abuse = pd.abuse("you f**king a$$hole");
 Console.WriteLine(abuse);
 
 {"sentence_type": "Abusive", "confidence_score": 0.953125}
+
+var sentiment_social = sentiment_social("I left my camera at home")
+Console.WriteLine(sentiment_social);
+
+{"probabilities": {"positive": 0.040374, "neutral": 0.491032, "negative": 0.468594}}
+
+var usage = pd.usage();
+Console.WriteLine(usage);
+
+{"emotion": 100, "sentiment": 96, "similarity": 100, "taxonomy": 100, "abuse": 100, "intent": 100, "keywords": 100, "ner": 100, "multilang": 100, "sentiment_social": 97}
 ```
