@@ -29,7 +29,7 @@ ParallelDots.api pd = new ParallelDots.api(api_key);
 var sentiment = pd.sentiment("Come on, lets play together");
 Console.WriteLine(sentiment);
 
-{"probabilities": {"positive": 0.00002,"neutral": 0.999954,"negative": 0.000026}}
+{"probabilities": {"positive": 0.568817,"neutral": 0.400776,"negative": 0.030407}, "sentiment":"positive"}
 
 var similarity = pd.similarity("Sachin is the greatest batsman", "Tendulkar is the finest cricketer");
 Console.WriteLine(similarity);
