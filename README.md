@@ -15,10 +15,10 @@ PM> Install-Package ParallelDots
 > Open the Reference Manager in Visual Studio using the Project > Add Reference > Browse.
 
 > Then select the .dll file from path given below:
--- PROJECT_FOLDER > bin > Debug > ParallelDots.dll
+> PROJECT_FOLDER > bin > Debug > ParallelDots.dll
 
 > If working in Release Environment then:
--- PROJECT_FOLDER > bin > Release > ParallelDots.dll
+> PROJECT_FOLDER > bin > Release > ParallelDots.dll
 
 #### Import ParallelDots namespace
 ```sh
