@@ -7,7 +7,7 @@ CSharp Wrapper for ParallelDots APIs
 > Open the console in Visual Studio using the Tools > NuGet Package Manager > Package Manager Console command.
 
 ```sh
-PM> Install-Package ParallelDots
+PM> Install-Package ParallelDots -Version 2.0.1
 ```
 
 #### Set a reference path in Visual C#
@@ -16,11 +16,7 @@ PM> Install-Package ParallelDots
 
 > Then select the .dll file from path given below:
 
-> PROJECT_FOLDER > bin > Debug > ParallelDots.dll
-
-> If working in Release Environment then:
-
-> PROJECT_FOLDER > bin > Release > ParallelDots.dll
+> ROOT_PATH\packages\ParallelDots.2.0.1\lib\Paralleldots.dll
 
 #### Import ParallelDots namespace
 ```sh
