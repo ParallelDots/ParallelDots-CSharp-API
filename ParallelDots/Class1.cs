@@ -15,13 +15,18 @@ namespace ParallelDots
         {
             this.api_key = api_key;
         }
+        public WebClient add_headers(WebClient client) {
+            client.Headers.Add("source", "c#wrapper");
+            return client;
+        }
         public string sentiment(string text)
         {
             var url = "https://apis.paralleldots.com/v2/sentiment?text=" + text + "&api_key=" + this.api_key;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
@@ -31,8 +36,9 @@ namespace ParallelDots
             var url = "https://apis.paralleldots.com/v2/similarity?text_1=" + text_1 + "&text_2=" + text_2 + "&api_key=" + this.api_key;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
@@ -43,8 +49,9 @@ namespace ParallelDots
             var url = "https://apis.paralleldots.com/v2/ner?text=" + text + "&api_key=" + this.api_key;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
@@ -54,8 +61,9 @@ namespace ParallelDots
             var url = "https://apis.paralleldots.com/v2/keywords?text=" + text + "&api_key=" + this.api_key;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
@@ -66,8 +74,9 @@ namespace ParallelDots
             var url = "https://apis.paralleldots.com/v2/taxonomy?text=" + text + "&api_key=" + this.api_key;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
@@ -77,8 +86,9 @@ namespace ParallelDots
             var url = "https://apis.paralleldots.com/v2/emotion?text=" + text + "&api_key=" + this.api_key;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
@@ -88,8 +98,9 @@ namespace ParallelDots
             var url = "https://apis.paralleldots.com/v2/intent?text=" + text + "&api_key=" + this.api_key;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
@@ -99,8 +110,9 @@ namespace ParallelDots
             var url = "https://apis.paralleldots.com/v2/multilang?text=" + text + "&api_key=" + this.api_key + "&lang_code=" + lang_code;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
@@ -110,33 +122,36 @@ namespace ParallelDots
             var url = "https://apis.paralleldots.com/v2/abuse?text=" + text + "&api_key=" + this.api_key;
             using (var client = new WebClient())
             {
+                WebClient client_h = this.add_headers(client);
                 var values = new NameValueCollection();
-                var response = client.UploadValues(url, values);
+                var response = client_h.UploadValues(url, values);
                 var responseString = Encoding.Default.GetString(response);
                 return responseString;
             }
         }
-	public string sentiment_social(string text)
-	{
-		var url = "http://apis.paralleldots.com/v2/sentiment_social?text=" + text + "&api_key=" + this.api_key;
-		using (var client = new WebClient())
-		{
-			var values = new NameValueCollection();
-			var response = client.UploadValues(url, values);
-			var responseString = Encoding.Default.GetString(response);
-			return responseString;
-		}
-	}
-	public string usage()
-	{
-		var url = "http://apis.paralleldots.com/usage?api_key=" + this.api_key;
-		using (var client = new WebClient())
-		{
-			var values = new NameValueCollection();
-			var response = client.UploadValues(url, values);
-			var responseString = Encoding.Default.GetString(response);
-			return responseString;
-		}
-	}
+	    public string sentiment_social(string text)
+	    {
+		    var url = "http://apis.paralleldots.com/v2/sentiment_social?text=" + text + "&api_key=" + this.api_key;
+		    using (var client = new WebClient())
+		    {
+                WebClient client_h = this.add_headers(client);
+                var values = new NameValueCollection();
+			    var response = client_h.UploadValues(url, values);
+			    var responseString = Encoding.Default.GetString(response);
+			    return responseString;
+		    }
+	    }
+	    public string usage()
+	    {
+		    var url = "http://apis.paralleldots.com/usage?api_key=" + this.api_key;
+		    using (var client = new WebClient())
+		    {
+                WebClient client_h = this.add_headers(client);
+                var values = new NameValueCollection();
+			    var response = client_h.UploadValues(url, values);
+			    var responseString = Encoding.Default.GetString(response);
+			    return responseString;
+		    }
+	    }
     }
 }
