@@ -11,9 +11,11 @@ namespace ParallelDots
     public class api
     {
         string api_key;
-        public api(string api_key)
+        string app_id;
+        public api(string api_key, string app_id)
         {
             this.api_key = api_key;
+            this.app_id = app_id;
         }
         public WebClient add_headers(WebClient client) {
             client.Headers.Add("source", "c#wrapper");
@@ -141,7 +143,31 @@ namespace ParallelDots
 			    return responseString;
 		    }
 	    }
-	    public string usage()
+        public string custom_classifier(string text)
+        {
+            var url = "http://apis.paralleldots.com/v2/custom_classifier?text=" + text +"&api_key=" + this.api_key +"&id="+ this.app_id;
+            using (var client = new WebClient())
+            {
+                WebClient client_h = this.add_headers(client);
+                var values = new NameValueCollection();
+                var response = client_h.UploadValues(url, values);
+                var responseString = Encoding.Default.GetString(response);
+                return responseString;
+            }
+        }
+        public string text_parser(string text)
+        {
+            var url = "http://apis.paralleldots.com/v2/text_parser?text=" + text + "&api_key=" + this.api_key;
+            using (var client = new WebClient())
+            {
+                WebClient client_h = this.add_headers(client);
+                var values = new NameValueCollection();
+                var response = client_h.UploadValues(url, values);
+                var responseString = Encoding.Default.GetString(response);
+                return responseString;
+            }
+        }
+        public string usage()
 	    {
 		    var url = "http://apis.paralleldots.com/usage?api_key=" + this.api_key;
 		    using (var client = new WebClient())
@@ -153,5 +179,6 @@ namespace ParallelDots
 			    return responseString;
 		    }
 	    }
+        
     }
 }
