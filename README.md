@@ -24,7 +24,7 @@ using ParallelDots
 ```
 #### Initialize Instance of api Class
 ```sh
-ParallelDots.api pd = new ParallelDots.api(api_key);
+api pd = new api(api_key, app_id);
 ```
 #### Example
 ```sh
