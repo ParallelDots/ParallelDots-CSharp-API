@@ -26,6 +26,8 @@ using ParallelDots
 ```sh
 using Newtonsoft.Json.Linq;
 paralleldots pd = new paralleldots(<api_key>);
+
+//define category for the custom classifier endpoint
 JObject category = JObject.Parse(@"{'world politics': ['diplomacy', 'UN', 'war'], 'india': ['congress', 'india', 'bjp'], 'finance': ['markets', 'economy', 'shares']}");
 ```
 #### Example
