@@ -1,184 +1,343 @@
 ﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-using System.Collections.Specialized;
-using System.Net;
+using Newtonsoft.Json.Linq;
+using RestSharp;
+using System.IO;
 
 namespace ParallelDots
 {
-    public class api
+    public class paralleldots
     {
         string api_key;
-        string app_id;
-        public api(string api_key, string app_id)
+        string host = "https://apis.paralleldots.com/v3/";
+        
+        public paralleldots(string api_key)
         {
             this.api_key = api_key;
-            this.app_id = app_id;
         }
-        public WebClient add_headers(WebClient client) {
-            client.Headers.Add("source", "c#wrapper");
-            return client;
-        }
-        public string sentiment(string text)
+
+        public string abuse(string text)
         {
-            var url = "https://apis.paralleldots.com/v2/sentiment?text=" + text + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
+            if (this.api_key != null)
             {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
+                var url = host + "abuse?api_key=" + this.api_key + "&text=" + text;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string custom_classifier(string text, JObject category)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "custom_classifier?api_key=" + this.api_key + "&text=" + text + "&category=" + category;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string emotion(string text)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "emotion?api_key=" + this.api_key + "&text=" + text + "&lang_code=en";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
             }
         }
-        public string similarity(string text_1, string text_2)
+
+        public string emotion(string text, string lang_code)
         {
-            var url = "https://apis.paralleldots.com/v2/similarity?text_1=" + text_1 + "&text_2=" + text_2 + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
+            if (this.api_key != null)
             {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
+                var url = host + "emotion?api_key=" + this.api_key + "&text=" + text + "&lang_code=" + lang_code;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
             }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string intent(string text)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "intent?api_key=" + this.api_key + "&text=" + text;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string keywords(string text)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "keywords?api_key=" + this.api_key + "&text=" + text;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string multilang_keywords(string text, string lang_code)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "multilang_keywords?api_key=" + this.api_key + "&text=" + text + "&lang_code=" + lang_code;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
         }
 
         public string ner(string text)
         {
-            var url = "https://apis.paralleldots.com/v2/ner?text=" + text + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
+            if (this.api_key != null)
             {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
+                var url = host + "ner?api_key=" + this.api_key + "&text=" + text;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
             }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
         }
-        public string keywords(string text)
+
+        public string nsfw(string path)
         {
-            var url = "https://apis.paralleldots.com/v2/keywords?text=" + text + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
+            if (File.Exists(path))
             {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
+                if (this.api_key != null)
+                {
+                    var url = host + "nsfw?api_key=" + this.api_key;
+                    var client = new RestClient(url);
+                    var request = new RestRequest(Method.POST);                    
+                    request.AddHeader("cache-control", "no-cache");
+                    request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    request.AddHeader("source", "c#wrapper");
+                    request.AddFile("file", path);
+                    request.AlwaysMultipartFormData = true;
+                    IRestResponse response = client.Execute(request);
+                    return response.Content.ToString();
+                }
+                else
+                {
+                    return "{ \"Error\": \"API key does not exist\" }";
+                }
+            }
+            else
+            {
+                return "{ \"Error\": \"File does not exist\" }";
             }
         }
 
+        public string phrase_extractor(string text)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "phrase_extractor?api_key=" + this.api_key + "&text=" + text;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string popularity(string path)
+        {
+            if (File.Exists(path))
+            {
+                if (this.api_key != null)
+                {
+                    var url = host + "popularity?api_key=" + this.api_key;
+                    var client = new RestClient(url);
+                    var request = new RestRequest(Method.POST);
+                    request.AlwaysMultipartFormData = true;
+                    request.AddHeader("cache-control", "no-cache");
+                    request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    request.AddHeader("source", "c#wrapper");
+                    request.AddFile("file", path);
+                    IRestResponse response = client.Execute(request);
+                    return response.Content.ToString();
+                }
+                else
+                {
+                    return "{ \"Error\": \"API key does not exist\" }";
+                }
+            }
+            else {
+                return "{ \"Error\": \"File does not exist\" }";
+            }
+                        
+        }
+
+        public string sentiment(string text)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "sentiment?api_key=" + this.api_key + "&text=" + text + "&lang_code=en";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string sentiment(string text, string lang_code)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "sentiment?api_key=" + this.api_key + "&text=" + text + "&lang_code=" + lang_code;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string similarity(string text_1, string text_2)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "similarity?api_key=" + this.api_key+ "&text_1=" + text_1 + "&text_2=" + text_2;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }      
+
         public string taxonomy(string text)
         {
-            var url = "https://apis.paralleldots.com/v2/taxonomy?text=" + text + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
+            if (this.api_key != null)
             {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
+                var url = host + "taxonomy?api_key=" + this.api_key + "&text=" + text;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
             }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
         }
-        public string emotion(string text)
-        {
-            var url = "https://apis.paralleldots.com/v2/emotion?text=" + text + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
-            {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
-            }
-        }
-        public string intent(string text)
-        {
-            var url = "https://apis.paralleldots.com/v2/intent?text=" + text + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
-            {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
-            }
-        }
-        public string multilang(string text, string lang_code)
-        {
-            var url = "https://apis.paralleldots.com/v2/multilang?text=" + text + "&api_key=" + this.api_key + "&lang_code=" + lang_code;
-            using (var client = new WebClient())
-            {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
-            }
-        }
-        public string abuse(string text)
-        {
-            var url = "https://apis.paralleldots.com/v2/abuse?text=" + text + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
-            {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
-            }
-        }
-	    public string sentiment_social(string text)
-	    {
-		    var url = "http://apis.paralleldots.com/v2/sentiment_social?text=" + text + "&api_key=" + this.api_key;
-		    using (var client = new WebClient())
-		    {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-			    var response = client_h.UploadValues(url, values);
-			    var responseString = Encoding.Default.GetString(response);
-			    return responseString;
-		    }
-	    }
-        public string custom_classifier(string text)
-        {
-            var url = "http://apis.paralleldots.com/v2/custom_classifier?text=" + text +"&api_key=" + this.api_key +"&id="+ this.app_id;
-            using (var client = new WebClient())
-            {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
-            }
-        }
+        
         public string text_parser(string text)
         {
-            var url = "http://apis.paralleldots.com/v2/text_parser?text=" + text + "&api_key=" + this.api_key;
-            using (var client = new WebClient())
+            if (this.api_key != null)
             {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-                var response = client_h.UploadValues(url, values);
-                var responseString = Encoding.Default.GetString(response);
-                return responseString;
+                var url = host + "text_parser?api_key=" + this.api_key + "&text=" + text;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
             }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
         }
+
         public string usage()
 	    {
-		    var url = "http://apis.paralleldots.com/usage?api_key=" + this.api_key;
-		    using (var client = new WebClient())
-		    {
-                WebClient client_h = this.add_headers(client);
-                var values = new NameValueCollection();
-			    var response = client_h.UploadValues(url, values);
-			    var responseString = Encoding.Default.GetString(response);
-			    return responseString;
-		    }
-	    }
-        
+            if (this.api_key != null)
+            {
+                var url = "https://apis.paralleldots.com/usage?api_key=" + this.api_key;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }		    
+	    }        
     }
 }
