@@ -187,6 +187,25 @@ namespace ParallelDots
             }
         }
 
+        public string nsfw_url (String url_image)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "nsfw?api_key=" + this.api_key +"&url=" +url_image;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
         public string phrase_extractor(string text)
         {
             if (this.api_key != null)
@@ -229,8 +248,26 @@ namespace ParallelDots
             }
             else {
                 return "{ \"Error\": \"File does not exist\" }";
+            }                        
+        }
+
+        public string popularity_url(string url_image)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "popularity?api_key=" + this.api_key + "&url=" + url_image;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("Content-Type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
             }
-                        
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
         }
 
         public string sentiment(string text)
