@@ -9,7 +9,23 @@ CSharp Wrapper for ParallelDots APIs
 ```sh
 PM> Install-Package ParallelDots -Version 2.0.5
 ```
-
+#### Languages Supported
+	- Portuguese ( pt )
+	- Simplified Chinese ( zh )
+	- Spanish ( es )
+	- German ( de )
+	- French ( fr )
+	- Dutch ( nl )
+	- Italian (it)
+	- Japanese ( ja )
+	- Russian ( ru )
+	- Thai ( th )
+	- Danish ( da )
+	- Finish ( fi )
+	- Arabic ( ar )
+	- Greek ( el )
+  
+  
 #### Set a reference path in Visual C#
 
 > Open the Reference Manager in Visual Studio using the Project > Add Reference > Browse.
