@@ -87,6 +87,53 @@ namespace ParallelDots
             }            
         }
 
+        public string facial_emotion(string path)
+        {
+            if (File.Exists(path))
+            {
+                if (this.api_key != null)
+                {
+                    var url = host + "facial_emotion?api_key=" + this.api_key;
+                    var client = new RestClient(url);
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("cache-control", "no-cache");
+                    request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    request.AddHeader("source", "c#wrapper");
+                    request.AddFile("file", path);
+                    request.AlwaysMultipartFormData = true;
+                    IRestResponse response = client.Execute(request);
+                    return response.Content.ToString();
+                }
+                else
+                {
+                    return "{ \"Error\": \"API key does not exist\" }";
+                }
+            }
+            else
+            {
+                return "{ \"Error\": \"File does not exist\" }";
+            }
+        }
+
+        public string facial_emotion_url(String url_image)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "facial_emotion?api_key=" + this.api_key + "&url=" + url_image;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
         public string intent(string text)
         {
             if (this.api_key != null)
@@ -192,6 +239,53 @@ namespace ParallelDots
             if (this.api_key != null)
             {
                 var url = host + "nsfw?api_key=" + this.api_key +"&url=" +url_image;
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddHeader("cache-control", "no-cache");
+                request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string object_recognizer(string path)
+        {
+            if (File.Exists(path))
+            {
+                if (this.api_key != null)
+                {
+                    var url = host + "object_recognizer?api_key=" + this.api_key;
+                    var client = new RestClient(url);
+                    var request = new RestRequest(Method.POST);
+                    request.AddHeader("cache-control", "no-cache");
+                    request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    request.AddHeader("source", "c#wrapper");
+                    request.AddFile("file", path);
+                    request.AlwaysMultipartFormData = true;
+                    IRestResponse response = client.Execute(request);
+                    return response.Content.ToString();
+                }
+                else
+                {
+                    return "{ \"Error\": \"API key does not exist\" }";
+                }
+            }
+            else
+            {
+                return "{ \"Error\": \"File does not exist\" }";
+            }
+        }
+
+        public string object_recognizer_url(String url_image)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "object_recognizer?api_key=" + this.api_key + "&url=" + url_image;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
