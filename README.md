@@ -43,18 +43,21 @@ using ParallelDots
 using Newtonsoft.Json.Linq;
 paralleldots pd = new paralleldots(<api_key>);
 
-//define category for the custom classifier endpoint
+//define category for the custom classifier api
 JObject category = JObject.Parse(@"{'world politics': ['diplomacy', 'UN', 'war'], 'india': ['congress', 'india', 'bjp'], 'finance': ['markets', 'economy', 'shares']}");
+//define path_to_image for the visual apis
+String path_to_image = @"<path_to_image>";
+//define url_to_image for the visual apis
+String url_to_image = "<url_to_image>";
+//define text_list for the batch apis
+JArray text_list = JArray.Parse("[\"drugs are fun\", \"don\'t do drugs, stay in school\", \"lol you a fag son\", \"I have a throat infection\"]");
+//define text_list_multilang for the multilang batch apis
+JArray text_list_multilang = JArray.Parse("[\"les drogues sont amusantes\", \"ne pas faire de la drogue reste à l'école\", \"lol vous un fils de fag\", \"J'ai une infection de la gorge\"]");
+//define lang_text for the language detection api
+String lang_text = "C'est un environnement très hostile, si vous choisissez de débattre ici, vous serez vicieusement attaqué par l'opposition.";
 ```
 #### Example
 ```sh
-
-String path_to_image = @"<path_to_image>";
-String url_to_image = "<url_to_image>";
-JArray text_list = JArray.Parse("[\"drugs are fun\", \"don\'t do drugs, stay in school\", \"lol you a fag son\", \"I have a throat infection\"]");
-JArray text_list_multilang = JArray.Parse("[\"les drogues sont amusantes\", \"ne pas faire de la drogue reste à l'école\", \"lol vous un fils de fag\", \"J'ai une infection de la gorge\"]");
-String lang_text = "C'est un environnement très hostile, si vous choisissez de débattre ici, vous serez vicieusement attaqué par l'opposition.";
-
 Console.WriteLine("abuse");
 String abuse = pd.abuse("you f**king a$$hole");
 Console.WriteLine(abuse);
