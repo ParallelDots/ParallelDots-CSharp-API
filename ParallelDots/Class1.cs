@@ -37,7 +37,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "abuse_batch?api_key=" + this.api_key + "&data=" + text_list;
+                var url = host + "abuse_batch?api_key=" + this.api_key + "&text=" + text_list;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -110,7 +110,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "emotion_batch?api_key=" + this.api_key + "&data=" + text_list + "&lang_code=en";
+                var url = host + "emotion_batch?api_key=" + this.api_key + "&text=" + text_list + "&lang_code=en";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -129,7 +129,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "emotion_batch?api_key=" + this.api_key + "&data=" + text_list + "&lang_code=" + lang_code;
+                var url = host + "emotion_batch?api_key=" + this.api_key + "&text=" + text_list + "&lang_code=" + lang_code;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -213,7 +213,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "intent_batch?api_key=" + this.api_key + "&data=" + text_list;
+                var url = host + "intent_batch?api_key=" + this.api_key + "&text=" + text_list;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -250,7 +250,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "keywords_batch?api_key=" + this.api_key + "&data=" + text_list;
+                var url = host + "keywords_batch?api_key=" + this.api_key + "&text=" + text_list;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -288,7 +288,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "language_detection_batch?api_key=" + this.api_key + "&data=" + text_list;
+                var url = host + "language_detection_batch?api_key=" + this.api_key + "&text=" + text_list;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -343,7 +343,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "ner_batch?api_key=" + this.api_key + "&data=" + text_list;
+                var url = host + "ner_batch?api_key=" + this.api_key + "&text=" + text_list;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -474,7 +474,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "phrase_extractor_batch?api_key=" + this.api_key + "&data=" + text_list;
+                var url = host + "phrase_extractor_batch?api_key=" + this.api_key + "&text=" + text_list;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -575,7 +575,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "sentiment_batch?api_key=" + this.api_key + "&data=" + text_list + "&lang_code=en";
+                var url = host + "sentiment_batch?api_key=" + this.api_key + "&text=" + text_list + "&lang_code=en";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -594,7 +594,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "sentiment_batch?api_key=" + this.api_key + "&data=" + text_list + "&lang_code=" + lang_code;
+                var url = host + "sentiment_batch?api_key=" + this.api_key + "&text=" + text_list + "&lang_code=" + lang_code;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -649,7 +649,7 @@ namespace ParallelDots
         {
             if (this.api_key != null)
             {
-                var url = host + "taxonomy_batch?api_key=" + this.api_key + "&data=" + text_list;
+                var url = host + "taxonomy_batch?api_key=" + this.api_key + "&text=" + text_list;
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
@@ -673,6 +673,7 @@ namespace ParallelDots
                 var request = new RestRequest(Method.POST);
                 request.AddHeader("cache-control", "no-cache");
                 request.AddHeader("content-type", "application/json");
+                request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
             }
