@@ -8,7 +8,7 @@ namespace ParallelDots
     public class paralleldots
     {
         string api_key;
-        string host = "https://apis.paralleldots.com/v3/";
+        public string host = "https://apis.paralleldots.com/v4/";
         
         public paralleldots(string api_key)
         {
@@ -25,7 +25,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -45,7 +45,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -67,7 +67,7 @@ namespace ParallelDots
                 request.AddParameter("text", text);
                 request.AddParameter("category", category);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+               // request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -88,7 +88,7 @@ namespace ParallelDots
                 request.AddParameter("text", text);
                 request.AddParameter("lang_code", "en");
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -108,10 +108,12 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddParameter("lang_code", lang_code);
+                Console.WriteLine(text,this.api_key);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
+                Console.WriteLine(response.Content.ToString());
                 return response.Content.ToString();
             }
             else {
@@ -126,11 +128,11 @@ namespace ParallelDots
                 var url = host + "emotion_batch";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
-                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("api_key", "yhdP8m39eFkuVeAR6flcrpeki3dAzzVIKNzA9OUGyiU");
                 request.AddParameter("text", text_list);
                 request.AddParameter("lang_code", "en");
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -152,7 +154,7 @@ namespace ParallelDots
                 request.AddParameter("text", text_list);
                 request.AddParameter("lang_code", lang_code);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -174,7 +176,7 @@ namespace ParallelDots
                     var request = new RestRequest(Method.POST);
                     request.AddParameter("api_key", this.api_key);
                     request.AddHeader("cache-control", "no-cache");
-                    request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    //request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
                     request.AddHeader("source", "c#wrapper");
                     request.AddFile("file", path);
                     request.AlwaysMultipartFormData = true;
@@ -202,7 +204,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("url", url_image);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -223,7 +225,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -243,7 +245,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -264,7 +266,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -284,7 +286,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -305,7 +307,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -326,7 +328,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -348,7 +350,7 @@ namespace ParallelDots
                 request.AddParameter("text", text);
                 request.AddParameter("lang_code", lang_code);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -368,7 +370,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -388,7 +390,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -410,7 +412,7 @@ namespace ParallelDots
                     var request = new RestRequest(Method.POST);
                     request.AddParameter("api_key", this.api_key);
                     request.AddHeader("cache-control", "no-cache");
-                    request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    //request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
                     request.AddHeader("source", "c#wrapper");
                     request.AddFile("file", path);
                     request.AlwaysMultipartFormData = true;
@@ -438,7 +440,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("url", url_image);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -460,7 +462,7 @@ namespace ParallelDots
                     var request = new RestRequest(Method.POST);
                     request.AddParameter("api_key", this.api_key);
                     request.AddHeader("cache-control", "no-cache");
-                    request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    //request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
                     request.AddHeader("source", "c#wrapper");
                     request.AddFile("file", path);
                     request.AlwaysMultipartFormData = true;
@@ -488,7 +490,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("url", url_image);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -509,7 +511,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -529,7 +531,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -552,7 +554,7 @@ namespace ParallelDots
                     request.AddParameter("api_key", this.api_key);
                     request.AlwaysMultipartFormData = true;
                     request.AddHeader("cache-control", "no-cache");
-                    request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
+                    //request.AddHeader("content-type", "multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW");
                     request.AddHeader("source", "c#wrapper");
                     request.AddFile("file", path);
                     IRestResponse response = client.Execute(request);
@@ -578,7 +580,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("url", url_image);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -600,7 +602,7 @@ namespace ParallelDots
                 request.AddParameter("text", text);
                 request.AddParameter("lang_code", "en");
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -621,7 +623,7 @@ namespace ParallelDots
                 request.AddParameter("text", text);
                 request.AddParameter("lang_code", lang_code);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -642,7 +644,7 @@ namespace ParallelDots
                 request.AddParameter("text", text_list);
                 request.AddParameter("lang_code", "en");
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -664,7 +666,187 @@ namespace ParallelDots
                 request.AddParameter("text", text_list);
                 request.AddParameter("lang_code", lang_code);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string sarcasm(string text)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "sarcasm";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text);
+                request.AddParameter("lang_code", "en");
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string sarcasm(string text, string lang_code)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "sarcasm";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text);
+                request.AddParameter("lang_code", lang_code);
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string sarcasm_batch(JArray text_list)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "sarcasm_batch";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text_list);
+                request.AddParameter("lang_code", "en");
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string sarcasm_batch(JArray text_list, string lang_code)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "sarcasm_batch";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text_list);
+                request.AddParameter("lang_code", lang_code);
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string target_sentiment(string text,string entity)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "target/sentiment";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text);
+                request.AddParameter("entity", entity);
+                request.AddParameter("lang_code", "en");
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string target_sentiment(string text,string entity, string lang_code)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "target/sentiment";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text);
+                request.AddParameter("lang_code", lang_code);
+                request.AddParameter("entity", entity);
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string target_sentiment_batch(JArray text_list,string entity)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "target/sentiment_batch";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text_list);
+                request.AddParameter("entity", entity);
+                request.AddParameter("lang_code", "en");
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
+        public string target_sentiment_batch(JArray text_list, string entity, string lang_code)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "target/sentiment_batch";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("entity", entity);
+                request.AddParameter("text", text_list);
+                request.AddParameter("lang_code", lang_code);
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -686,7 +868,7 @@ namespace ParallelDots
                 request.AddParameter("text_1", text_1);
                 request.AddParameter("text_2", text_2);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -706,7 +888,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -726,7 +908,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -747,7 +929,7 @@ namespace ParallelDots
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -756,6 +938,8 @@ namespace ParallelDots
                 return "{ \"Error\": \"API key does not exist\" }";
             }            
         }
+
+
 
         public string usage()
 	    {
@@ -766,7 +950,7 @@ namespace ParallelDots
                 var request = new RestRequest(Method.POST);
                 request.AddParameter("api_key", this.api_key);
                 request.AddHeader("cache-control", "no-cache");
-                request.AddHeader("Content-Type", "multipart/form-data");
+                //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
                 IRestResponse response = client.Execute(request);
                 return response.Content.ToString();
@@ -776,4 +960,6 @@ namespace ParallelDots
             }		    
 	    }        
     }
+
 }
+
