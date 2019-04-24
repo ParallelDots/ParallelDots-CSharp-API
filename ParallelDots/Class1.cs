@@ -401,6 +401,49 @@ namespace ParallelDots
             }
         }
 
+        public string ner(string text,string lang_code)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "ner";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text);
+                request.AddParameter("lang_code", lang_code);
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }            
+        }
+
+        public string ner_batch(JArray text_list,string lang_code)
+        {
+            if (this.api_key != null)
+            {
+                var url = host + "ner_batch";
+                var client = new RestClient(url);
+                var request = new RestRequest(Method.POST);
+                request.AddParameter("api_key", this.api_key);
+                request.AddParameter("text", text_list);
+                request.AddParameter("lang_code", lang_code);
+                request.AddHeader("cache-control", "no-cache");
+                //request.AddHeader("Content-Type", "multipart/form-data");
+                request.AddHeader("source", "c#wrapper");
+                IRestResponse response = client.Execute(request);
+                return response.Content.ToString();
+            }
+            else
+            {
+                return "{ \"Error\": \"API key does not exist\" }";
+            }
+        }
+
         public string nsfw(string path)
         {
             if (File.Exists(path))
