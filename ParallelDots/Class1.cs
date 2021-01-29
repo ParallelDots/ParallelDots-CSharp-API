@@ -56,7 +56,7 @@ namespace ParallelDots
             }
         }
 
-        public string custom_classifier(string text, JObject category)
+        public string custom_classifier(string text, JArray category)
         {
             if (this.api_key != null)
             {
@@ -128,7 +128,7 @@ namespace ParallelDots
                 var url = host + "emotion_batch";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
-                request.AddParameter("api_key", "yhdP8m39eFkuVeAR6flcrpeki3dAzzVIKNzA9OUGyiU");
+                request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
                 request.AddParameter("lang_code", "en");
                 request.AddHeader("cache-control", "no-cache");
@@ -808,16 +808,16 @@ namespace ParallelDots
             }
         }
 
-        public string target_sentiment(string text,string entity)
+        public string target_sentiment(string text,string aspect)
         {
             if (this.api_key != null)
             {
-                var url = host + "target/sentiment";
+                var url = host + "target_sentiment";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
-                request.AddParameter("entity", entity);
+                request.AddParameter("aspect", aspect);
                 request.AddParameter("lang_code", "en");
                 request.AddHeader("cache-control", "no-cache");
                 //request.AddHeader("Content-Type", "multipart/form-data");
@@ -831,17 +831,17 @@ namespace ParallelDots
             }
         }
 
-        public string target_sentiment(string text,string entity, string lang_code)
+        public string target_sentiment(string text,string aspect, string lang_code)
         {
             if (this.api_key != null)
             {
-                var url = host + "target/sentiment";
+                var url = host + "target_sentiment";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text);
                 request.AddParameter("lang_code", lang_code);
-                request.AddParameter("entity", entity);
+                request.AddParameter("aspect", aspect);
                 request.AddHeader("cache-control", "no-cache");
                 //request.AddHeader("Content-Type", "multipart/form-data");
                 request.AddHeader("source", "c#wrapper");
@@ -854,16 +854,16 @@ namespace ParallelDots
             }
         }
 
-        public string target_sentiment_batch(JArray text_list,string entity)
+        public string target_sentiment_batch(JArray text_list,string aspect)
         {
             if (this.api_key != null)
             {
-                var url = host + "target/sentiment_batch";
+                var url = host + "target_sentiment_batch";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddParameter("api_key", this.api_key);
                 request.AddParameter("text", text_list);
-                request.AddParameter("entity", entity);
+                request.AddParameter("aspect", aspect);
                 request.AddParameter("lang_code", "en");
                 request.AddHeader("cache-control", "no-cache");
                 //request.AddHeader("Content-Type", "multipart/form-data");
@@ -877,15 +877,15 @@ namespace ParallelDots
             }
         }
 
-        public string target_sentiment_batch(JArray text_list, string entity, string lang_code)
+        public string target_sentiment_batch(JArray text_list, string aspect, string lang_code)
         {
             if (this.api_key != null)
             {
-                var url = host + "target/sentiment_batch";
+                var url = host + "target_sentiment_batch";
                 var client = new RestClient(url);
                 var request = new RestRequest(Method.POST);
                 request.AddParameter("api_key", this.api_key);
-                request.AddParameter("entity", entity);
+                request.AddParameter("aspect", aspect);
                 request.AddParameter("text", text_list);
                 request.AddParameter("lang_code", lang_code);
                 request.AddHeader("cache-control", "no-cache");
