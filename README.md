@@ -7,7 +7,7 @@ CSharp Wrapper for ParallelDots APIs
 > Open the console in Visual Studio using the Tools > NuGet Package Manager > Package Manager Console command.
 
 ```sh
-PM> Install-Package ParallelDots -Version 2.0.8
+PM> Install-Package ParallelDots -Version 2.1.3
 ```
 #### Languages Supported
 	- Portuguese ( pt )
@@ -32,7 +32,7 @@ PM> Install-Package ParallelDots -Version 2.0.8
 
 > Then select the .dll file from path given below:
 
-> ROOT_PATH\packages\ParallelDots.2.0.2\lib\Paralleldots.dll
+> ROOT_PATH\packages\ParallelDots.2.1.3\lib\Paralleldots.dll
 
 #### Import ParallelDots namespace
 ```sh
@@ -44,7 +44,7 @@ using Newtonsoft.Json.Linq;
 paralleldots pd = new paralleldots(<api_key>);
 
 //define category for the custom classifier api
-JObject category = JObject.Parse(@"{'world politics': ['diplomacy', 'UN', 'war'], 'india': ['congress', 'india', 'bjp'], 'finance': ['markets', 'economy', 'shares']}");
+JObject category = JArray.Parse("[\"world politics\", \"finance\"]");
 //define path_to_image for the visual apis
 String path_to_image = @"<path_to_image>";
 //define url_to_image for the visual apis
